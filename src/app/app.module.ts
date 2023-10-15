@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { IndexComponent } from './layout/index/index.component';
-import { HeaderComponent } from './layout/header/header.component';
-import { FooterComponent } from './layout/footer/footer.component';
+import { IndexComponent } from './component/layout/index/index.component';
+import { HeaderComponent } from './component/layout/header/header.component';
+import { FooterComponent } from './component/layout/footer/footer.component';
 import { ClienteslistComponent } from './component/cliente/clienteslist/clienteslist.component';
 import { ClientesdetailsComponent } from './component/cliente/clientesdetails/clientesdetails.component';
 import { FuncionarioslistComponent } from './component/funcionario/funcionarioslist/funcionarioslist.component';
@@ -20,6 +20,7 @@ import { VendaslistComponent } from './component/venda/vendaslist/vendaslist.com
 import { VendasdetailsComponent } from './component/venda/vendasdetails/vendasdetails.component';
 import { LoginComponent } from './component/sistema/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,8 +44,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

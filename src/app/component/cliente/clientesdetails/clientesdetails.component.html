@@ -1,1 +1,16 @@
-<p>clientesdetails works!</p>
+<form (ngSubmit)="editar()">
+    <div class="mb-3">
+        <label for="exampleInputText1" class="form-label">Nome:</label>
+        <input type="text" class="form-control" name="exampleInputText1" aria-describedby="emailHelp"
+            [(ngModel)]="cliente.nome">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Endereço:</label>
+        <input type="number" class="form-control" name="exampleInputPassword1" [(ngModel)]="cliente.endereco">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Username:</label>
+        <input type="number" class="form-control" name="exampleInputPassword1" [(ngModel)]="cliente.username">
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>

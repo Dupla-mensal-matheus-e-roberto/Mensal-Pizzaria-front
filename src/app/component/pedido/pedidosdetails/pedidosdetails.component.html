@@ -1,1 +1,13 @@
-<p>pedidosdetails works!</p>
+<form (ngSubmit)="verificar()">
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Status:</label>
+        <input type="text" class="form-control" name="status" [(ngModel)]="pedido.status">
+    </div>
+    <div class="mb-3">
+        <label for="cliente" class="form-label">Cliente:</label>
+        <select class="form-select" name="cliente" [(ngModel)]="pedido.cliente">
+            <option *ngFor="let cliente of lista" [ngValue]="cliente">{{ cliente.nome }}</option>
+        </select>    
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>

@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, inject } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Cliente } from 'src/app/models/cliente';
+import { Pedido } from 'src/app/models/pedido';
+import { PedidoService } from 'src/app/services/pedido.service';
 
 @Component({
   selector: 'app-pedidoslist',
@@ -6,5 +10,67 @@ import { Component } from '@angular/core';
   styleUrls: ['./pedidoslist.component.scss']
 })
 export class PedidoslistComponent {
+
+  retorno = new EventEmitter<Pedido>();
+
+  lista: Pedido[] = [];
+  listacliente: Cliente[] = [];
+
+  pedidoSelecionadoParaEdicao: Pedido = new Pedido();
+  indiceSelecionadoParaEdicao!: number;
+
+  modalService = inject(NgbModal);
+  pedidoService = inject(PedidoService);
+
+  constructor(){
+
+    this.listAll();
+  }
+
+  listAll(){
+    this.pedidoService.listAll().subscribe({
+      next: lista => {
+        this.lista = lista;
+      },
+      error: erro => {
+        alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
+        console.error(erro);
+      }
+    });
+
+  }
+
+
+  adicionar(modal : any){
+    this.pedidoSelecionadoParaEdicao = new Pedido();
+ 
+    this.modalService.open(modal, {size: 'lg'});
+  }
+
+  editar(modal: any, pedido: Pedido, indice: number) {
+    this.pedidoSelecionadoParaEdicao = Object.assign({}, pedido);
+    this.indiceSelecionadoParaEdicao = indice;
+
+    this.modalService.open(modal, { size: 'lg'});
+  }
+
+  deletar(pedido: Pedido){
+    this.pedidoService.delete(pedido.idPedido).subscribe({
+      next: retorno =>{
+        this.lista = this.lista.filter(p => p.idPedido !== pedido.idPedido);
+        this.retorno.emit(pedido);
+      },
+      error: erro =>{
+        this.lista = this.lista.filter(p => p.idPedido !== pedido.idPedido);
+        console.log(erro);
+      }
+    });
+  }
+
+  addOuEditarPedido(pedido: Pedido) {
+    this.listAll();
+
+    this.modalService.dismissAll();
+  }
 
 }

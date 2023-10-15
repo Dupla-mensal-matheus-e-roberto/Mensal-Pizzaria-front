@@ -18,19 +18,7 @@ export class ClientesdetailsComponent {
 
   }
 
-  salvar(){
-    this.clienteService.save(this.cliente).subscribe({
-      next: cliente => {
-        this.retorno.emit(cliente);
-      },
-      error: erro => {
-        alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
-        console.error(erro);
-      }
-    });
-  }
-
-  editar(){
+  verificar(){
     this.clienteService.verify(this.cliente).subscribe({
       next: cliente =>{
         this.retorno.emit(cliente);

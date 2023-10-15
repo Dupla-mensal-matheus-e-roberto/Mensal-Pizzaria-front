@@ -42,24 +42,24 @@ export class ClienteslistComponent {
   adicionar(modal : any){
     this.clienteSelecionadoParaEdicao = new Cliente();
  
-    this.modalService.open(modal, {size: 'sm'});
+    this.modalService.open(modal, {size: 'lg'});
   }
 
   editar(modal: any, cliente: Cliente, indice: number) {
     this.clienteSelecionadoParaEdicao = Object.assign({}, cliente);
     this.indiceSelecionadoParaEdicao = indice;
 
-    this.modalService.open(modal, { size: 'sm'});
+    this.modalService.open(modal, { size: 'lg'});
   }
 
   deletar(cliente: Cliente){
-    this.clienteService.delete(cliente.id).subscribe({
-      next: cliente =>{
-        this.lista = this.lista.filter(c => c.id !== cliente.id);
+    this.clienteService.delete(cliente.idCliente).subscribe({
+      next: retorno =>{
+        this.lista = this.lista.filter(c => c.idCliente !== cliente.idCliente);
         this.retorno.emit(cliente);
       },
       error: erro =>{
-        alert("Erro, olhar no console");
+        this.lista = this.lista.filter(c => c.idCliente !== cliente.idCliente);
         console.log(erro);
       }
     });

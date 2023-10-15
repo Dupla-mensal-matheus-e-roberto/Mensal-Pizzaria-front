@@ -21,6 +21,7 @@ import { VendasdetailsComponent } from './component/venda/vendasdetails/vendasde
 import { LoginComponent } from './component/sistema/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     AppRoutingModule,
     NgbModule,
-    
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

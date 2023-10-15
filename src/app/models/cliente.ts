@@ -1,5 +1,5 @@
 export class Cliente {
-    id!: number
+    idCliente!: number
     nome!: string
     endereco!: string
     username!: string

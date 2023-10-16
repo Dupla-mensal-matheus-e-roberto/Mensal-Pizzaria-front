@@ -25,6 +25,8 @@ export class PedidoslistComponent {
   constructor(){
 
     this.listAll();
+
+    
   }
 
   listAll(){
@@ -48,6 +50,7 @@ export class PedidoslistComponent {
   }
 
   editar(modal: any, pedido: Pedido, indice: number) {
+    console.log(pedido);
     this.pedidoSelecionadoParaEdicao = Object.assign({}, pedido);
     this.indiceSelecionadoParaEdicao = indice;
 

@@ -5,7 +5,7 @@
     </div>
     <div class="mb-3">
         <label for="cliente" class="form-label">Cliente:</label>
-        <select class="form-select" name="cliente" [(ngModel)]="pedido.cliente">
+        <select [compareWith]="byId" class="form-select" name="cliente" [(ngModel)]="pedido.cliente">
             <option *ngFor="let cliente of lista" [ngValue]="cliente">{{ cliente.nome }}</option>
         </select>    
     </div>

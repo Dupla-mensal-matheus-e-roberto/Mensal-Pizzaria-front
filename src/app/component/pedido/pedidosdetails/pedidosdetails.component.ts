@@ -3,6 +3,7 @@ import { Cliente } from 'src/app/models/cliente';
 import { Pedido } from 'src/app/models/pedido';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { PedidoService } from 'src/app/services/pedido.service';
+import 'bootstrap/dist/js/bootstrap.bundle';
 
 @Component({
   selector: 'app-pedidosdetails',
@@ -19,6 +20,15 @@ export class PedidosdetailsComponent {
 
   constructor(private clienteService: ClienteService, private pedidoService: PedidoService){
     this.listAllCliente();
+
+    console.log(this.pedido);
+  }
+
+  byId(item1: any, item2: any){
+    if(item1 != null && item2 != null)
+      return item1.id === item2.id
+    else
+      return item1 === item2;
   }
 
   listAllCliente(){

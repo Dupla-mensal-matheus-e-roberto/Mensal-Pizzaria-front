@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Funcionario } from 'src/app/models/funcionario';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
+import 'bootstrap/dist/js/bootstrap.bundle';
 
 @Component({
   selector: 'app-funcionariosdetails',

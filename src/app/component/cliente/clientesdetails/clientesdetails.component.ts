@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
 import { ClienteService } from 'src/app/services/cliente.service';
+import 'bootstrap/dist/js/bootstrap.bundle';
 
 @Component({
   selector: 'app-clientesdetails',

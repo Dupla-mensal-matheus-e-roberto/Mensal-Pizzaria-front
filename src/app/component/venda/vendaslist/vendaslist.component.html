@@ -1,1 +1,47 @@
-<p>vendaslist works!</p>
+<div class="container">
+    <h3 class="alert alert-primary">Listagem de Vendas!</h3>
+    <td> <button class="btn btn-primary" (click)="adicionar(modal1)">Adicionar</button> </td>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#ID</th>
+                        <th scope="col">Tipo Pagamento</th>
+                        <th scope="col">Pedido</th>
+                        <th scope="col">Tipo entrega</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let vendas of lista; let i = index">
+                        <th scope="row">{{ vendas.idVenda }}</th>
+                        <td> {{ vendas.tipo_pagamento }} </td>
+                        <td> {{ vendas.pedido }}</td>
+                        <td> {{ vendas.tipoEntrega }}</td>
+                        <td> 
+                            <button class="btn btn-primary" (click)="editar(modal1, vendas, i)">Editar</button> 
+                            <button class="btn btn-primary" (click)="deletar(vendas)">Deletar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #modal1 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Nova Venda</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+       
+        <app-vendasdetails [venda]="vendaSelecionadoParaEdicao" (retorno)="addOuEditarVenda($event)" ></app-vendasdetails>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>

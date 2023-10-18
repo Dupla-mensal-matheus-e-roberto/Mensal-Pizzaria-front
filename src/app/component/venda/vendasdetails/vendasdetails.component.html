@@ -1,1 +1,16 @@
-<p>vendasdetails works!</p>
+<form (ngSubmit)="verificar()">
+    <div class="mb-3">
+        <label for="exampleInputText1" class="form-label">Tipo de Pagamento:</label>
+        <input type="text" class="form-control" name="exampleInputText1" aria-describedby="emailHelp"
+            [(ngModel)]="venda.tipo_pagamento">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Pedido:</label>
+        <input type="text" class="form-control" name="exampleInputText1" [(ngModel)]="venda.pedido">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Tipo Entrega:</label>
+        <input type="text" class="form-control" name="exampleInputText1" [(ngModel)]="venda.tipoEntrega">
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>

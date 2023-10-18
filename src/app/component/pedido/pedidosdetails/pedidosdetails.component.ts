@@ -20,8 +20,6 @@ export class PedidosdetailsComponent {
 
   constructor(private clienteService: ClienteService, private pedidoService: PedidoService){
     this.listAllCliente();
-
-    console.log(this.pedido);
   }
 
   byId(item1: any, item2: any){

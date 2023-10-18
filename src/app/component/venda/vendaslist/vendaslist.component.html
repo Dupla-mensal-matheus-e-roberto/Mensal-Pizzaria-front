@@ -8,17 +8,19 @@
                     <tr>
                         <th scope="col">#ID</th>
                         <th scope="col">Tipo Pagamento</th>
-                        <th scope="col">Pedido</th>
                         <th scope="col">Tipo entrega</th>
+                        <th scope="col">Funcionario</th>
+                        <th scope="col">Pedido</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let vendas of lista; let i = index">
                         <th scope="row">{{ vendas.idVenda }}</th>
-                        <td> {{ vendas.tipo_pagamento }} </td>
-                        <td> {{ vendas.pedido }}</td>
+                        <td> {{ vendas.tipoPagamento }} </td>
                         <td> {{ vendas.tipoEntrega }}</td>
+                        <td> {{ vendas.funcionario}}</td>
+                        <td> {{ vendas.pedido }}</td>
                         <td> 
                             <button class="btn btn-primary" (click)="editar(modal1, vendas, i)">Editar</button> 
                             <button class="btn btn-primary" (click)="deletar(vendas)">Deletar</button>

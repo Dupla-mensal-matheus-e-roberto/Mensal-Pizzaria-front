@@ -2,15 +2,23 @@
     <div class="mb-3">
         <label for="exampleInputText1" class="form-label">Tipo de Pagamento:</label>
         <input type="text" class="form-control" name="exampleInputText1" aria-describedby="emailHelp"
-            [(ngModel)]="venda.tipo_pagamento">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Pedido:</label>
-        <input type="text" class="form-control" name="exampleInputText1" [(ngModel)]="venda.pedido">
+            [(ngModel)]="venda.tipoPagamento">
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Tipo Entrega:</label>
         <input type="text" class="form-control" name="exampleInputText1" [(ngModel)]="venda.tipoEntrega">
+    </div>
+    <div class="mb-3">
+        <label for="exampleSelectFuncionario" class="form-label">Funcionario: </label>
+        <select [compareWith]="byId" class="form-select" name="funcionario" [(ngModel)]="venda.funcionario">
+            <option *ngFor="let funcionario of listaFuncionario" [ngValue]="funcionario" >{{funcionario.nome}}</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Pedido:</label>
+        <select [compareWith]="byId" class="form-select" name="cliente" [(ngModel)]="venda.pedido">
+            <option *ngFor="let pedido of lista" [ngValue]="pedido">{{ pedido.cliente.nome }}</option>
+        </select>   
     </div>
     <button type="submit" class="btn btn-primary">Salvar</button>
 </form>

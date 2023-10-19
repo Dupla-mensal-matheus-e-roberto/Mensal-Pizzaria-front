@@ -19,8 +19,8 @@
                         <th scope="row">{{ vendas.idVenda }}</th>
                         <td> {{ vendas.tipoPagamento }} </td>
                         <td> {{ vendas.tipoEntrega }}</td>
-                        <td> {{ vendas.funcionario}}</td>
-                        <td> {{ vendas.pedido }}</td>
+                        <td> {{ vendas.funcionario.nome}}</td>
+                        <td> {{ vendas.pedido.cliente.nome }}</td>
                         <td> 
                             <button class="btn btn-primary" (click)="editar(modal1, vendas, i)">Editar</button> 
                             <button class="btn btn-primary" (click)="deletar(vendas)">Deletar</button>

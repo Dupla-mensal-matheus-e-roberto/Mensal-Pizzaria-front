@@ -9,7 +9,6 @@
                         <th scope="col">#ID</th>
                         <th scope="col">Pizza</th>
                         <th scope="col">Acompanhamentos</th>
-                        <th scope="col">Pedido</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
@@ -18,7 +17,6 @@
                         <th scope="row">{{ produtos.idProduto }}</th>
                         <td> {{ produtos.pizza }} </td>
                         <td> {{ produtos.acompanhamentos }}</td>
-                        <td> {{ produtos.pedido }}</td>
                         <td *ngIf="!modolancamento"> 
                             <button class="btn btn-primary" (click)="editar(modal1, produtos, i)">Editar</button> 
                             <button class="btn btn-primary" (click)="deletar(produtos)">Deletar</button>

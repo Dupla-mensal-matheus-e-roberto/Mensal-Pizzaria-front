@@ -9,5 +9,23 @@
             <option *ngFor="let cliente of lista" [ngValue]="cliente">{{ cliente.nome }}</option>
         </select>    
     </div>
+    <div class="mb-3">
+    </div>
     <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
+    <button class="btn btn-primary" (click)="adicionar(modal1)">Lançar</button>
+
+<ng-template #modal1 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+       
+        <app-produtoslist [modolancamento]="true" (retorno)="produtoList($event)" ></app-produtoslist>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>

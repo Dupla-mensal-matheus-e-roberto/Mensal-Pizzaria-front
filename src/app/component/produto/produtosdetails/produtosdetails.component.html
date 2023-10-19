@@ -1,16 +1,15 @@
 <form (ngSubmit)="verificar()">
     <div class="mb-3">
         <label for="exampleInputText1" class="form-label">Pizza:</label>
-        <input type="text" class="form-control" name="exampleInputText1" aria-describedby="emailHelp"
-            [(ngModel)]="produto.pizza">
+        <select [compareWith]="byId" class="form-select" name="pizza" [(ngModel)]="produto.pizza">  
+
+            <option *ngFor="let pizza of listaPizza" [ngValue]="pizza"> {{pizza.sabores}} </option>
+
+        </select>
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Acompanhamentos:</label>
         <input type="text" class="form-control" name="exampleInputText1" [(ngModel)]="produto.acompanhamentos">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Pedido:</label>
-        <input type="text" class="form-control" name="exampleInputText1" [(ngModel)]="produto.pedido">
     </div>
     <button type="submit" class="btn btn-primary">Salvar</button>
 </form>

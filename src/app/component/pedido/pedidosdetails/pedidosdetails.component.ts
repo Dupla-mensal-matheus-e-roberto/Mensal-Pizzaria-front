@@ -4,6 +4,8 @@ import { Pedido } from 'src/app/models/pedido';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { PedidoService } from 'src/app/services/pedido.service';
 import 'bootstrap/dist/js/bootstrap.bundle';
+import { Produto } from 'src/app/models/produto';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-pedidosdetails',
@@ -17,6 +19,9 @@ export class PedidosdetailsComponent {
 
   lista:Cliente[] = [];
   clienteSelecionado!: Cliente;
+
+  modalref!: NgbModalRef;
+  modalService = inject(NgbModal);
 
   constructor(private clienteService: ClienteService, private pedidoService: PedidoService){
     this.listAllCliente();
@@ -53,8 +58,22 @@ export class PedidosdetailsComponent {
         console.log(erro)
       }
     })
+  }
+
+
+  produtoList(produto: Produto){
+    if(this.pedido.produtos == null){
+      this.pedido.produtos = []
     }
 
+    this.pedido.produtos.push(produto);
   }
+
+  adicionar(modal: any){
+    this.modalref = this.modalService.open(modal, {size: 'lg'})
+    
+  }
+
+}
 
 

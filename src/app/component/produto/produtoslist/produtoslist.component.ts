@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Produto } from 'src/app/models/produto';
 import { ProdutoService } from 'src/app/services/produto.service';
@@ -10,8 +10,9 @@ import { ProdutoService } from 'src/app/services/produto.service';
 })
 export class ProdutoslistComponent {
 
+  @Input() modolancamento: boolean = false;
 
-  retorno = new EventEmitter<Produto>();
+  @Output() retorno = new EventEmitter<Produto>();
 
   lista: Produto[] = [];
 
@@ -70,6 +71,11 @@ export class ProdutoslistComponent {
     this.listAll();
 
     this.modalService.dismissAll();
+  }
+
+
+  lancamento(produto: Produto){
+    this.retorno.emit(produto);
   }
 
 

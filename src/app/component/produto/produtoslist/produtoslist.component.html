@@ -19,9 +19,12 @@
                         <td> {{ produtos.pizza }} </td>
                         <td> {{ produtos.acompanhamentos }}</td>
                         <td> {{ produtos.pedido }}</td>
-                        <td> 
+                        <td *ngIf="!modolancamento"> 
                             <button class="btn btn-primary" (click)="editar(modal1, produtos, i)">Editar</button> 
                             <button class="btn btn-primary" (click)="deletar(produtos)">Deletar</button>
+                        </td>
+                        <td *ngIf="modolancamento">
+                            <button class="btn btn-primary" (click)="lancamento(produtos)">Lançar</button> 
                         </td>
                     </tr>
                 </tbody>

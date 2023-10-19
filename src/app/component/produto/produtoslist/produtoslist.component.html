@@ -9,19 +9,17 @@
                         <th scope="col">#ID</th>
                         <th scope="col">Pizza</th>
                         <th scope="col">Acompanhamentos</th>
-                        <th scope="col">Pedido</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let produtos of lista; let i = index">
-                        <th scope="row">{{ produtos.idProduto }}</th>
-                        <td> {{ produtos.pizza }} </td>
-                        <td> {{ produtos.acompanhamentos }}</td>
-                        <td> {{ produtos.pedido }}</td>
+                    <tr *ngFor="let produto of lista; let i = index">
+                        <th scope="row">{{ produto.idProduto }}</th>
+                        <td> {{ produto.pizza.sabores }} </td>
+                        <td> {{ produto.acompanhamentos }}</td>
                         <td> 
-                            <button class="btn btn-primary" (click)="editar(modal1, produtos, i)">Editar</button> 
-                            <button class="btn btn-primary" (click)="deletar(produtos)">Deletar</button>
+                            <button class="btn btn-primary" (click)="editar(modal1, produto, i)">Editar</button> 
+                            <button class="btn btn-primary" (click)="deletar(produto)">Deletar</button>
                         </td>
                     </tr>
                 </tbody>

@@ -30,6 +30,7 @@ export class ProdutoService {
   }
 
   verify(produto: Produto){
+    console.log(produto)
     if(produto.idProduto){
       return this.update(produto);
     } else {

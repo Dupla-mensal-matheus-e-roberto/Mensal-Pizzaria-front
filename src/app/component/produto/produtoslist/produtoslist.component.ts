@@ -11,7 +11,6 @@ import { ProdutoService } from 'src/app/services/produto.service';
 export class ProdutoslistComponent {
 
   @Input() modolancamento: boolean = false;
-
   @Output() retorno = new EventEmitter<Produto>();
 
   lista: Produto[] = [];
@@ -21,6 +20,8 @@ export class ProdutoslistComponent {
 
   modalService = inject(NgbModal);
   produtoService = inject(ProdutoService);
+
+  modoConsulta: boolean = false
 
   constructor(){
 
@@ -41,13 +42,14 @@ export class ProdutoslistComponent {
   }
 
   adicionar(modal : any){
+    this.modoConsulta = false
     this.produtoSelecionadoParaEdicao = new Produto();
  
     this.modalService.open(modal, {size: 'lg'});
   }
 
   editar(modal: any, produto: Produto, indice: number) {
-
+    this.modoConsulta = false
     this.produtoSelecionadoParaEdicao = Object.assign({}, produto);
     this.indiceSelecionadoParaEdicao = indice;
 
@@ -78,5 +80,12 @@ export class ProdutoslistComponent {
     this.retorno.emit(produto);
   }
 
+  visualizar(modal: any, produto: Produto){
+    this.modoConsulta = true;
+
+    this.produtoSelecionadoParaEdicao = Object.assign({}, produto);
+
+    this.modalService.open(modal, {size: 'lg'})
+  }
 
 }

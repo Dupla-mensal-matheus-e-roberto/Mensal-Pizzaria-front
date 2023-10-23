@@ -1,15 +1,57 @@
 <form (ngSubmit)="verificar()">
     <div class="mb-3">
-        <label for="exampleInputText1" class="form-label">Pizza:</label>
-        <select [compareWith]="byId" class="form-select" name="pizza" [(ngModel)]="produto.pizza">  
-
-            <option *ngFor="let pizza of listaPizza" [ngValue]="pizza"> {{pizza.sabores}} </option>
-
-        </select>
+        <label for="exampleInputPassword1" class="form-label">Acompanhamentos:</label>
+        <input [disabled]="modoConsulta" type="text" class="form-control" name="exampleInputText1" [(ngModel)]="produto.acompanhamentos">
     </div>
     <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Acompanhamentos:</label>
-        <input type="text" class="form-control" name="exampleInputText1" [(ngModel)]="produto.acompanhamentos">
+        <label for="exampleInputPassword1" class="form-label">Preço:</label>
+        <input [disabled]="modoConsulta" type="number" class="form-control" name="exampleInputText1" [(ngModel)]="produto.preco">
     </div>
-    <button type="submit" class="btn btn-primary">Salvar</button>
+    <button [disabled]="modoConsulta" type="submit" class="btn btn-primary">Salvar</button>
 </form>
+    <br>
+    <button *ngIf="!modoConsulta" class="btn btn-primary" (click)="adicionar(modal1)">Lançar</button>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#ID</th>
+                        <th scope="col">Sabores</th>
+                        <th scope="col">Tamanho</th>
+                        <th scope="col">Adicionais</th>
+                        <th scope="col">Removiveis</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pizza of produto.pizzas; let i = index">
+                        <th scope="row">{{ pizza.idPizza }}</th>
+                        <td> {{ pizza.sabores }} </td>
+                        <td> {{ pizza.tamanho }}</td>
+                        <td> {{ pizza.adicionais }}</td>
+                        <td> {{ pizza.removiveis }}</td>
+                        <td> 
+                            <button [disabled]="modoConsulta" class="btn btn-danger" (click)="deletarPizza(i)">Deletar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+<ng-template #modal1 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        
+        <app-pizzaslist [modolancamento]="true" (retorno)="pizzaList($event)" ></app-pizzaslist>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>

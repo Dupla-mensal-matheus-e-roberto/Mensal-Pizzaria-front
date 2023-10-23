@@ -6,7 +6,11 @@
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Tamanho:</label>
-        <input type="text" class="form-control" name="exampleInputText1" [(ngModel)]="pizza.tamanho">
+        <select name="tamanho" class="form-select" [(ngModel)]="pizza.tamanho">
+            <option value="G">G</option>
+            <option value="M">M</option>
+            <option value="P">P</option>
+        </select>
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Adicionais:</label>

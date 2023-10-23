@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import { Pizza } from 'src/app/models/pizza';
 import { Produto } from 'src/app/models/produto';
@@ -16,8 +17,12 @@ export class ProdutosdetailsComponent {
 
   @Input() produto: Produto = new Produto();
   @Output() retorno = new EventEmitter<Produto>();
+  @Input() modoConsulta!: boolean
 
   listaPizza : Pizza[] = []
+
+  modalref!: NgbModalRef;
+  modalService = inject(NgbModal);
 
   produtoService = inject(ProdutoService);
   pizzaService = inject(PizzaService)
@@ -56,6 +61,25 @@ export class ProdutosdetailsComponent {
         console.log(erro)
       }
     })
+  }
+
+  pizzaList(pizza: Pizza){
+    if(this.produto.pizzas == null){
+      this.produto.pizzas = []
+    }
+
+    this.produto.pizzas.push(pizza);
+
+    this.modalref.dismiss();
+  }
+
+  adicionar(modal: any){
+    this.modalref = this.modalService.open(modal, {size: 'lg'})
+  }
+
+  deletarPizza(i: number){
+    this.produto.pizzas.splice(i, 1);
+    
   }
 
 }

@@ -9,6 +9,7 @@
                         <th scope="col">#ID</th>
                         <th scope="col">Tipo Pagamento</th>
                         <th scope="col">Tipo entrega</th>
+                        <th scope="col">Valor total</th>
                         <th scope="col">Funcionario</th>
                         <th scope="col">Pedido</th>
                         <th scope="col">Ações</th>
@@ -19,11 +20,12 @@
                         <th scope="row">{{ vendas.idVenda }}</th>
                         <td> {{ vendas.tipoPagamento }} </td>
                         <td> {{ vendas.tipoEntrega }}</td>
+                        <td>R$ {{ vendas.valorTotal }}</td>
                         <td> {{ vendas.funcionario.nome}}</td>
                         <td> {{ vendas.pedido.cliente.nome }}</td>
                         <td> 
-                            <button class="btn btn-primary" (click)="editar(modal1, vendas, i)">Editar</button> 
-                            <button class="btn btn-primary" (click)="deletar(vendas)">Deletar</button>
+                            <button class="btn btn-primary col-4" style="margin-right: 10px;" (click)="editar(modal1, vendas, i)">Editar</button> 
+                            <button class="btn btn-danger col-4" (click)="deletar(vendas)">Deletar</button>
                         </td>
                     </tr>
                 </tbody>

@@ -16,6 +16,7 @@ export class PedidosdetailsComponent {
 
   @Input() pedido: Pedido = new Pedido();
   @Output() retorno = new EventEmitter<Pedido>();
+  @Input() modoConsulta!: boolean 
 
   lista:Cliente[] = [];
   clienteSelecionado!: Cliente;
@@ -67,11 +68,17 @@ export class PedidosdetailsComponent {
     }
 
     this.pedido.produtos.push(produto);
+
+    this.modalref.dismiss();
   }
 
   adicionar(modal: any){
     this.modalref = this.modalService.open(modal, {size: 'lg'})
     
+  }
+
+  deletarProduto(i: number){
+    this.pedido.produtos.splice(i, 1);
   }
 
 }

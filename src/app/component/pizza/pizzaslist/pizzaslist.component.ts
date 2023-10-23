@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Pizza } from 'src/app/models/pizza';
 import { PizzaService } from 'src/app/services/pizza.service';
@@ -10,7 +10,8 @@ import { PizzaService } from 'src/app/services/pizza.service';
 })
 export class PizzaslistComponent {
 
-  retorno = new EventEmitter<Pizza>();
+  @Input() modolancamento: boolean = false;
+  @Output() retorno = new EventEmitter<Pizza>();
 
   lista: Pizza[] = [];
 
@@ -71,5 +72,8 @@ export class PizzaslistComponent {
     this.modalService.dismissAll();
   }
 
+  lancamento(pizza: Pizza){
+    this.retorno.emit(pizza);
+  }
 
 }

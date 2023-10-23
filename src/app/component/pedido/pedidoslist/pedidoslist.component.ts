@@ -22,6 +22,8 @@ export class PedidoslistComponent {
   modalService = inject(NgbModal);
   pedidoService = inject(PedidoService);
 
+  modoConsulta: boolean = false
+
   constructor(){
 
     this.listAll();
@@ -44,12 +46,14 @@ export class PedidoslistComponent {
 
 
   adicionar(modal : any){
+    this.modoConsulta = false
     this.pedidoSelecionadoParaEdicao = new Pedido();
  
     this.modalService.open(modal, {size: 'lg'});
   }
 
   editar(modal: any, pedido: Pedido, indice: number) {
+    this.modoConsulta = false
     console.log(pedido);
     this.pedidoSelecionadoParaEdicao = Object.assign({}, pedido);
     this.indiceSelecionadoParaEdicao = indice;
@@ -74,6 +78,14 @@ export class PedidoslistComponent {
     this.listAll();
 
     this.modalService.dismissAll();
+  }
+
+  visualizar(modal: any, pedido: Pedido){
+    this.modoConsulta = true;
+    console.log(pedido);
+    this.pedidoSelecionadoParaEdicao = Object.assign({}, pedido);
+
+    this.modalService.open(modal, {size: 'lg'})
   }
 
 }

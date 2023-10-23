@@ -21,9 +21,12 @@
                         <td> {{ pizzas.tamanho }}</td>
                         <td> {{ pizzas.adicionais }}</td>
                         <td> {{ pizzas.removiveis }}</td>
-                        <td> 
-                            <button class="btn btn-primary" (click)="editar(modal1, pizzas, i)">Editar</button> 
-                            <button class="btn btn-primary" (click)="deletar(pizzas)">Deletar</button>
+                        <td *ngIf="!modolancamento"> 
+                            <button class="btn btn-primary col-4" style="margin-right: 10px;" (click)="editar(modal1, pizzas, i)">Editar</button> 
+                            <button class="btn btn-danger col-4" (click)="deletar(pizzas)">Deletar</button>
+                        </td>
+                        <td *ngIf="modolancamento">
+                            <button class="btn btn-primary" (click)="lancamento(pizzas)">Lançar</button> 
                         </td>
                     </tr>
                 </tbody>

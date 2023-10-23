@@ -10,6 +10,7 @@
                         <th scope="col">Data</th>
                         <th scope="col">status</th>
                         <th scope="col">cliente</th>
+                        <th scope="col">Produtos</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
@@ -19,9 +20,12 @@
                         <td> {{ pedidos.dataDoPedido }} </td>
                         <td> {{ pedidos.status }} </td>
                         <td> {{ pedidos.cliente.nome }}</td>
-                        <td> 
-                            <button class="btn btn-primary" (click)="editar(modal1, pedidos, i)">Editar</button> 
-                            <button class="btn btn-primary" (click)="deletar(pedidos)">Deletar</button>
+                        <td>
+                            <button class="btn btn-success" (click)="visualizar(modal1, pedidos)">Visualizar</button>
+                        </td>
+                        <td > 
+                            <button class="btn btn-primary col-4" style="margin-right: 10px;" (click)="editar(modal1, pedidos, i)">Editar</button> 
+                            <button class="btn btn-danger col-4" (click)="deletar(pedidos)">Deletar</button>
                         </td>
                     </tr>
                 </tbody>
@@ -38,8 +42,9 @@
     </div>
     <div class="modal-body">
        
-        <app-pedidosdetails [pedido]="pedidoSelecionadoParaEdicao" (retorno)="addOuEditarPedido($event)" ></app-pedidosdetails>
+        <app-pedidosdetails [modoConsulta]="modoConsulta" [pedido]="pedidoSelecionadoParaEdicao" (retorno)="addOuEditarPedido($event)" ></app-pedidosdetails>
         
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>

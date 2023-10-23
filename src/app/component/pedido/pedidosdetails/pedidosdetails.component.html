@@ -1,19 +1,45 @@
 <form (ngSubmit)="verificar()">
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Status:</label>
-        <input type="text" class="form-control" name="status" [(ngModel)]="pedido.status">
+        <input [disabled]="modoConsulta" type="text" class="form-control" name="status" [(ngModel)]="pedido.status">
     </div>
     <div class="mb-3">
         <label for="cliente" class="form-label">Cliente:</label>
-        <select [compareWith]="byId" class="form-select" name="cliente" [(ngModel)]="pedido.cliente">
+        <select [disabled]="modoConsulta" [compareWith]="byId" class="form-select" name="cliente" [(ngModel)]="pedido.cliente">
             <option *ngFor="let cliente of lista" [ngValue]="cliente">{{ cliente.nome }}</option>
         </select>    
     </div>
     <div class="mb-3">
     </div>
-    <button type="submit" class="btn btn-primary">Salvar</button>
+    <button [disabled]="modoConsulta" type="submit" class="btn btn-primary">Salvar</button>
 </form>
-    <button class="btn btn-primary" (click)="adicionar(modal1)">Lançar</button>
+    <br>
+    <button *ngIf="!modoConsulta" class="btn btn-primary" (click)="adicionar(modal1)">Lançar</button>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#ID</th>
+                        <th scope="col">Acompanhamentos</th>
+                        <td scope="col">Preço</td>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let produto of pedido.produtos; let i = index">
+                        <th scope="row">{{ produto.idProduto }}</th>
+                        <td> {{ produto.acompanhamentos }}</td>
+                        <td>R$ {{produto.preco}}</td>
+                        <td > 
+                            <button [disabled]="modoConsulta" class="btn btn-danger" (click)="deletarProduto(i)">Deletar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 <ng-template #modal1 let-modal>
     <div class="modal-header">

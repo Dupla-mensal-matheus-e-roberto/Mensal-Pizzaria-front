@@ -7,4 +7,5 @@ export class Venda {
     pedido!: Pedido
     tipoEntrega!: string
     funcionario!: Funcionario
+    valorTotal!: number
 }

@@ -1,8 +1,8 @@
 import { Pizza } from "./pizza"
 
 export class Produto {
-    idProduto!: number
-    pizza!: Pizza
-    acompanhamentos!: string
-    
+    idProduto!: number;
+    pizzas!: Pizza[];
+    acompanhamentos!: string;
+    preco!: number;
 }

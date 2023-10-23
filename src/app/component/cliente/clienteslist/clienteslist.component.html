@@ -15,13 +15,13 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let clientes of lista; let i = index">
-                        <th scope="row">{{ clientes.idCliente }}</th>
+                        <td>{{ clientes.idCliente }}</td>
                         <td> {{ clientes.nome }} </td>
                         <td> {{ clientes.endereco }} </td>
                         <td> {{ clientes.username }}</td>
                         <td> 
-                            <button class="btn btn-primary" (click)="editar(modal1, clientes, i)">Editar</button> 
-                            <button class="btn btn-primary" (click)="deletar(clientes)">Deletar</button>
+                            <button type="button" class="btn btn-primary col-4" style="margin-right: 10px;" (click)="editar(modal1, clientes, i)">Editar</button> 
+                            <button type="button" class="btn btn-danger col-4" (click)="deletar(clientes)">Deletar</button>
                         </td>
                     </tr>
                 </tbody>

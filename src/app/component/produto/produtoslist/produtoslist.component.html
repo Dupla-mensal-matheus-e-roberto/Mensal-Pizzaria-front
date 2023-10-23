@@ -7,19 +7,23 @@
                 <thead>
                     <tr>
                         <th scope="col">#ID</th>
-                        <th scope="col">Pizza</th>
                         <th scope="col">Acompanhamentos</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">Pizzas</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let produtos of lista; let i = index">
                         <th scope="row">{{ produtos.idProduto }}</th>
-                        <td> {{ produtos.pizza }} </td>
                         <td> {{ produtos.acompanhamentos }}</td>
+                        <td>R$ {{produtos.preco}}</td>
+                        <td>
+                            <button class="btn btn-success" (click)="visualizar(modal1, produtos)">Visualizar</button>
+                        </td>
                         <td *ngIf="!modolancamento"> 
-                            <button class="btn btn-primary" (click)="editar(modal1, produtos, i)">Editar</button> 
-                            <button class="btn btn-primary" (click)="deletar(produtos)">Deletar</button>
+                            <button class="btn btn-primary col-4" style="margin-right: 10px;" (click)="editar(modal1, produtos, i)">Editar</button> 
+                            <button class="btn btn-danger col-4" (click)="deletar(produtos)">Deletar</button>
                         </td>
                         <td *ngIf="modolancamento">
                             <button class="btn btn-primary" (click)="lancamento(produtos)">Lançar</button> 
@@ -39,7 +43,7 @@
     </div>
     <div class="modal-body">
        
-        <app-produtosdetails [produto]="produtoSelecionadoParaEdicao" (retorno)="addOuEditarProduto($event)" ></app-produtosdetails>
+        <app-produtosdetails [modoConsulta]="modoConsulta" [produto]="produtoSelecionadoParaEdicao" (retorno)="addOuEditarProduto($event)" ></app-produtosdetails>
         
     </div>
     <div class="modal-footer">

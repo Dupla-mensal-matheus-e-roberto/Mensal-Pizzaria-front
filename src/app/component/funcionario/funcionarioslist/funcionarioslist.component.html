@@ -18,8 +18,8 @@
                         <td> {{ funcionarios.nome }} </td>
                         <td> {{ funcionarios.username }}</td>
                         <td> 
-                            <button class="btn btn-primary" (click)="editar(modal1, funcionarios, i)">Editar</button> 
-                            <button class="btn btn-primary" (click)="deletar(funcionarios)">Deletar</button>
+                            <button class="btn btn-primary col-4" style="margin-right: 10px;" (click)="editar(modal1, funcionarios, i)">Editar</button> 
+                            <button class="btn btn-danger col-4" (click)="deletar(funcionarios)">Deletar</button>
                         </td>
                     </tr>
                 </tbody>

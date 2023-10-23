@@ -25,8 +25,8 @@ export class PizzasdetailsComponent {
         this.retorno.emit(pizza);
       },
       error: erro =>{
-        alert("Errro, olhar no console");
-        console.log(erro)
+        alert(erro.error);
+        console.log(erro.error)
       }
     })
   }

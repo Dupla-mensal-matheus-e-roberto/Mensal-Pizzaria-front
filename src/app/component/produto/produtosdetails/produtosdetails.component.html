@@ -1,11 +1,11 @@
 <form (ngSubmit)="verificar()">
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Acompanhamentos:</label>
-        <input [disabled]="modoConsulta" type="text" class="form-control" name="exampleInputText1" [(ngModel)]="produto.acompanhamentos">
+        <input [disabled]="modoConsulta" type="text" class="form-control" name="acompanhamentos" [(ngModel)]="produto.acompanhamentos">
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Preço:</label>
-        <input [disabled]="modoConsulta" type="number" class="form-control" name="exampleInputText1" [(ngModel)]="produto.preco">
+        <input [disabled]="modoConsulta" type="number" class="form-control" name="preco" [(ngModel)]="produto.preco">
     </div>
     <button [disabled]="modoConsulta" type="submit" class="btn btn-primary">Salvar</button>
 </form>

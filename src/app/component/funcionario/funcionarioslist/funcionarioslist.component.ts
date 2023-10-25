@@ -17,6 +17,9 @@ export class FuncionarioslistComponent {
   funcionarioSelecionadoParaEdicao: Funcionario = new Funcionario();
   indiceSelecionadoParaEdicao!: number;
 
+  busca: string = "";
+  listaFiltrada: Funcionario[]= [];
+
   modalService = inject(NgbModal);
   funcionarioService = inject(FuncionarioService);
 
@@ -29,6 +32,7 @@ export class FuncionarioslistComponent {
     this.funcionarioService.listAll().subscribe({
       next: lista => {
         this.lista = lista;
+        this.listaFiltrada = lista;
       },
       error: erro => {
         alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
@@ -38,6 +42,18 @@ export class FuncionarioslistComponent {
 
   }
 
+  filtra(){
+    if(this.busca.length > 2){
+      this.listaFiltrada = [];
+      for(let i = 0; i< this.lista.length; i++){
+          if(this.lista[i].nome.toLowerCase().indexOf(this.busca.toLowerCase())>=0){
+            this.listaFiltrada.push(this.lista[i])
+          }
+        }
+    } else{
+      this.listaFiltrada = this.lista;
+    }
+  }
 
   adicionar(modal : any){
     this.funcionarioSelecionadoParaEdicao = new Funcionario();

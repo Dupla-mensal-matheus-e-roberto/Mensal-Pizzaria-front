@@ -17,6 +17,9 @@ export class ClienteslistComponent {
   clienteSelecionadoParaEdicao: Cliente = new Cliente();
   indiceSelecionadoParaEdicao!: number;
 
+  busca: string = "";
+  listaFiltrada: Cliente[] = [];
+
   modalService = inject(NgbModal);
   clienteService = inject(ClienteService);
 
@@ -29,6 +32,7 @@ export class ClienteslistComponent {
     this.clienteService.listAll().subscribe({
       next: lista => {
         this.lista = lista;
+        this.listaFiltrada = lista;
       },
       error: erro => {
         alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
@@ -38,6 +42,18 @@ export class ClienteslistComponent {
 
   }
 
+  filtra(){
+    if(this.busca.length > 2){
+      this.listaFiltrada = [];
+      for(let i = 0; i< this.lista.length; i++){
+          if(this.lista[i].nome.toLowerCase().indexOf(this.busca.toLowerCase())>=0){
+            this.listaFiltrada.push(this.lista[i])
+          }
+        }
+    } else{
+      this.listaFiltrada = this.lista;
+    }
+  }
 
   adicionar(modal : any){
     this.clienteSelecionadoParaEdicao = new Cliente();

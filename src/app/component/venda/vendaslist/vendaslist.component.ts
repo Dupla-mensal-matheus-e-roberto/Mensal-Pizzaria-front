@@ -18,6 +18,9 @@ export class VendaslistComponent {
   vendaSelecionadoParaEdicao: Venda = new Venda();
   indiceSelecionadoParaEdicao!: number;
 
+  busca:string = "";
+  listaFiltrada: Venda[] = [];
+
   modalService = inject(NgbModal);
   vendaService = inject(VendaService);
 
@@ -30,6 +33,7 @@ export class VendaslistComponent {
     this.vendaService.listAll().subscribe({
       next: lista => {
         this.lista = lista;
+        this.listaFiltrada = lista;
       },
       error: erro => {
         alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
@@ -37,6 +41,20 @@ export class VendaslistComponent {
       }
     });
 
+  }
+
+  filtra(){
+    if(this.busca.length > 2){
+      this.listaFiltrada = [];
+      for(let i = 0; i< this.lista.length; i++){
+          if(this.lista[i].funcionario.nome.toLowerCase().indexOf(this.busca.toLowerCase())>=0){
+            this.listaFiltrada.push(this.lista[i])
+          }
+        }
+    } 
+    else{
+      this.listaFiltrada = this.lista;
+    }
   }
 
   adicionar(modal : any){

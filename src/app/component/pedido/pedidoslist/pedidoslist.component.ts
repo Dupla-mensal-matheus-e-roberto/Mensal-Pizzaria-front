@@ -2,6 +2,7 @@ import { Component, EventEmitter, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Cliente } from 'src/app/models/cliente';
 import { Pedido } from 'src/app/models/pedido';
+import { Venda } from 'src/app/models/venda';
 import { PedidoService } from 'src/app/services/pedido.service';
 
 @Component({
@@ -92,6 +93,12 @@ export class PedidoslistComponent {
   }
 
   addOuEditarPedido(pedido: Pedido) {
+    this.listAll();
+
+    this.modalService.dismissAll();
+  }
+
+  addOuEditarVenda(venda: Venda) {
     this.listAll();
 
     this.modalService.dismissAll();

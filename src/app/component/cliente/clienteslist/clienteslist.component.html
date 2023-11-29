@@ -12,7 +12,6 @@
                         <th scope="col">#ID</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Endereço</th>
-                        <th scope="col">Username</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
@@ -21,7 +20,6 @@
                         <td>{{ clientes.idCliente }}</td>
                         <td> {{ clientes.nome }} </td>
                         <td> {{ clientes.endereco }} </td>
-                        <td> {{ clientes.username }}</td>
                         <td> 
                             <button type="button" class="btn btn-primary col-4" style="margin-right: 10px;" (click)="editar(modal1, clientes, i)">Editar</button> 
                             <button type="button" class="btn btn-danger col-4" (click)="deletar(clientes)">Deletar</button>

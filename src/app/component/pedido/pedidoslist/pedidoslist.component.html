@@ -10,11 +10,12 @@
                 <thead>
                     <tr>
                         <th scope="col">#ID</th>
-                        <th scope="col">Data</th>
+                        <th 
+                        scope="col">Data</th>
                         <th scope="col">status</th>
                         <th scope="col">cliente</th>
                         <th scope="col">Produtos</th>
-                        <th scope="col">Ações</th>
+                        <th class="center" scope="col">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,9 +27,10 @@
                         <td>
                             <button class="btn btn-success" (click)="visualizar(modal1, pedidos)">Visualizar</button>
                         </td>
-                        <td > 
-                            <button class="btn btn-primary col-4" style="margin-right: 10px;" (click)="editar(modal1, pedidos, i)">Editar</button> 
-                            <button class="btn btn-danger col-4" (click)="deletar(pedidos)">Deletar</button>
+                        <td> 
+                            <button class="btn btn-primary col-3" style="margin-right: 6px;" (click)="editar(modal1, pedidos, i)">Editar</button> 
+                            <button class="btn btn-danger col-3" style="margin-right: 6px;" (click)="deletar(pedidos)">Deletar</button>
+                            <button class="btn btn-dark col-3" (click)="adicionar(modal2)">Finalizar</button>
                         </td>
                     </tr>
                 </tbody>
@@ -46,6 +48,22 @@
     <div class="modal-body">
        
         <app-pedidosdetails [modoConsulta]="modoConsulta" [pedido]="pedidoSelecionadoParaEdicao" (retorno)="addOuEditarPedido($event)" ></app-pedidosdetails>
+        
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>
+
+<ng-template #modal2 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+       
+        <app-vendasdetails [pedido]="pedidoSelecionadoParaEdicao" ></app-vendasdetails>
         
 
     </div>

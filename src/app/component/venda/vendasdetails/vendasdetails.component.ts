@@ -15,6 +15,7 @@ import { VendaService } from 'src/app/services/venda.service';
 export class VendasdetailsComponent {
 
   @Input() venda: Venda = new Venda();
+  @Input() pedido: Pedido = new Pedido();
   @Output() retorno = new EventEmitter<Venda>();
 
   lista: Pedido[] = [];

@@ -22,6 +22,8 @@ import { LoginComponent } from './component/sistema/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { httpInterceptorProviders } from './interceptors/httpinterceptor.service';
+import { CadastroComponent } from './component/sistema/cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProdutosdetailsComponent,
     VendaslistComponent,
     VendasdetailsComponent,
-    LoginComponent
+    LoginComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,7 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

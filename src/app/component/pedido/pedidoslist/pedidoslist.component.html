@@ -63,7 +63,7 @@
     </div>
     <div class="modal-body">
        
-        <app-vendasdetails [pedido]="pedidoSelecionadoParaEdicao" ></app-vendasdetails>
+        <app-vendasdetails (retorno)="addOuEditarVenda($event)" ></app-vendasdetails>
         
 
     </div>

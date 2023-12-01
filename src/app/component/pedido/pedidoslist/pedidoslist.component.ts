@@ -68,6 +68,8 @@ export class PedidoslistComponent {
     this.pedidoSelecionadoParaEdicao = new Pedido();
  
     this.modalService.open(modal, {size: 'lg'});
+
+
   }
 
   editar(modal: any, pedido: Pedido, indice: number) {

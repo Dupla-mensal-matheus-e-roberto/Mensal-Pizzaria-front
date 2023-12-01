@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import { Funcionario } from 'src/app/models/funcionario';
 import { Pedido } from 'src/app/models/pedido';
@@ -25,6 +26,8 @@ export class VendasdetailsComponent {
   funcionarioSelecionado!: Funcionario;
 
   vendaService = inject(VendaService);
+
+  ngModal = inject(NgbModal)
 
   constructor(private pedidoService: PedidoService, private funcionarioService: FuncionarioService){
     this.listAllPedido();
@@ -68,6 +71,7 @@ export class VendasdetailsComponent {
     this.vendaService.verify(this.venda).subscribe({
       next: venda =>{
         this.retorno.emit(venda);
+        this.ngModal.dismissAll()
       },
       error: erro =>{
         alert("Errro, olhar no console");
